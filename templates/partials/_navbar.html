@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'restaurant/css/style.css' %}">
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+        margin: 0%;
+    }
+    body {
+    margin-top: 0; /* Removes default margin at the top */
+}
+/* Reset padding and margin for the navbar */
+/* Reset padding and margin for the navbar */
+.navbar {
+    margin-top: -5%;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* Remove padding and margin for the inner elements */
+.navbar-brand,
+.navbar-toggler,
+.collapse,
+.navbar-nav,
+.nav-item {
+    padding: 0;
+    margin: 0;
+}
+
+/* Remove margin for the navbar */
+nav {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+</style>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+        <div class="container">
+            <a class="navbar-brand" style="font-size: xx-large; font-family: 'Pacifico',cursive;" href="{% url 'home' %}">Food Bank</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-link"><a class="nav-link" href="{% url 'home' %}"><b>Home</b></a></button>
+                    </li>
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-link"><a class="nav-link" href="{% url 'my_posts' %}"><b>Dashboard </b></a></button>
+                    </li>
+
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-link"><a class="nav-link" href="{% url 'create' %}"><b>CreatePost </b></a></button>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-link"><a class="nav-link" href="{% url 'custom_logout' %}"><b>Logout </b></a></button>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-link"><a class="nav-link" href="{% url 'auth_login' %}"><b>Login</b></a></button>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-link"><a class="nav-link" href="{% url 'registration_register' %}"><b>Register</b></a></button>
+                    </li>
+                    {% endif %}
+                    
+
+                </ul>
+            </div>
+        </div>
+    </nav>
